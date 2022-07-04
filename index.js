@@ -3,8 +3,8 @@ const hostname = 'localhost'
 
 const { loadUser } = require("./user_model")
 
-//const port = process.env.PORT || 4000 //2.Setting up port
-const port = 4000 //2.Setting up port
+const port = process.env.PORT || 5000 //2.Setting up port
+
 
 const server = http.createServer((req, res) => { //3.Creating http server
     const jsonContent = JSON.stringify(loadUser())
