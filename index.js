@@ -1,17 +1,14 @@
-const http = require('http') //1.Import http module 
-const hostname = 'localhost'
+const http = require('http');
 
-const { loadUser } = require("./user_model")
+const hostname = 'localhost';
+const port = 3000;
 
-const port = process.env.PORT || 5000 //2.Setting up port
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World');
+});
 
-
-const server = http.createServer((req, res) => { //3.Creating http server
-    const jsonContent = JSON.stringify(loadUser())
-    res.end(jsonContent)
-
-})
-
-server.listen(port, hostname, () => {   //4.Listening to http sever
-    console.log(`Server running at http://${hostname}:${port}`)
-})
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
